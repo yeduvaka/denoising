@@ -4,11 +4,12 @@ def denoise(Y,A):
     reg_parameter = 1.0
     mu = calc_mean(Y,A,reg_parameter)
     sig = calc_variance(Y,A, reg_parameter)
-
     return mu,sig
 
-def calc_mean(Y,A,reg_parameter):
-    pass
+def calc_mean(Y,A,lbd):
+    p = A.shape[0]
+    mu_hat = sum((lambda x:np.transpose(x)*x, A)) +lbd*np.identity(n)
+
 
 def calc_variance(Y,A,reg_parameter):
     n = np.shape(Y)[0]
