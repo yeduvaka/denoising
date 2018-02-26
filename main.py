@@ -43,15 +43,19 @@ def estimate_covariance(input_images):
     Hs = [H(i) for i in range(0,n)]
     return Ys,mu,As,W,Hs
 
+
+
 def apply_wiener_filter(Ys,mu,As,W,Hs):
     p = len(Ys[0])
     Xs = [((np.identity(p) - Hs[i]*W*As[i])*mu +Hs[i]*y) for i,y in enumerate(Ys)]
     return Xs
 
+
+
+
 def main(input_images):
     Ys,mu,As,W,Hs = estimate_covariance(input_images)
     X_hats = apply_wiener_filter(Ys,mu,As,W,Hs)
-
     return None
 
 
